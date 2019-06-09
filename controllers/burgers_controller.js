@@ -15,28 +15,30 @@ router.get("/", function(req, res) {
     })
   });
 //updateOne
-  router.put("/burgers/update", function(req, res) {
+  router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
   
-    burger.update(req.body.burger_id, function(result) {
-        console.log(results);
-        res.redirect('/');
+    burger.update(req.params.id, function(result) {
+        console.log(result);
+        //res.redirect('/');
+        res.json(result);
     });
   });
+  
 
   //insertOne
-  router.post("/api/burgers", function(req, res) {
-    cat.create([
-      "name", "sleepy"
-    ], [
-      req.body.name, req.body.sleepy
-    ], function(result) {
+  //router.post("/api/burgers", function(req, res) {
+   // cat.create([
+   //   "name", "sleepy"
+  //  ], [
+  //    req.body.name, req.body.sleepy
+  //  ], function(result) {
       // Send back the ID of the new quote
-      res.json({ id: result.insertId });
-    });
-  });
+    //  res.json({ id: result.insertId });
+  //  });
+ // });
   
 
 

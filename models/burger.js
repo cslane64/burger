@@ -9,6 +9,7 @@ var burger = {
 
     update: function(condition, cb) {
       orm.update("burgers", condition, function(res) {
+        console.log("burger.js condition " + condition);
        cb(res);
      });
     }
@@ -23,4 +24,4 @@ var burger = {
   
   // Export the database functions for the controller (catsController.js).
   module.exports = burger;
-  
+   
