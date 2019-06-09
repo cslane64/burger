@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="row">
     <div class="col-xs-12 text-center" id="top-bar">
@@ -8,24 +6,51 @@
     <div class="col-xs-6 text-center" class="task">
       <div class="row">
         {{#each burgers}}
-          {{#unless this.devoured}}
+        {{#unless this.devoured}}
         <div class="col-xs-6 text-center">
           <pre>{{this.id}}, {{this.burger_name}}</pre>
         </div>
-      <div class="col-xs-3 text-center">
-          <!--<form method="POST" action="/api/burgers?_method=PUT" class="button-size">
-            <input type="hidden" name="burger_id" type="text" value={{this.id}}>
-            <br>
-            <button type="submit" class="btn btn-default">DEVOUR IT!</button>
-          </form>-->
-
+        <div class="col-xs-3 text-center">
           <button class="change-devour" data-id="{{id}}" data-eaten="{{devoured}}">
-		      {{#if devoured}}YUMMM{{else}}DEVOUR!{{/if}}
-	        </button>
+            {{#if devoured}}YUMMM{{else}}DEVOUR!{{/if}}
+          </button>
+        </div>
+        {{/unless}}
+        {{/each}}
       </div>
-      {{/unless}}
-      {{/each}}
+
+      <div class="col-xs-6 text-center" class="task">
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <input class="form-control" type="text" placeholder="{{this.id}}, {{this.burger_name}}" readonly>
+        {{/if}}
+        {{/each}}
       </div>
     </div>
   </div>
 </div>
+
+<h2>Add da BURGER</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="burger_name" name="name">
+  </div>
+
+  <!--<div class="form-group">
+    <label for="sleepy">Sleepy?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div>-->
+
+  <button type="submit">Add da Burger</button>
+</form>
+
+<!--<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center enter_section">
+      <form action=
+    </div>
+  </div>
+</div>-->

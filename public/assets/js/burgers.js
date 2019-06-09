@@ -12,55 +12,34 @@ $(function() {
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
         complete: function() {
-          //console.log("changed sleep to", newSleep);
-          // Reload the page to get the updated list
           location.reload();
         }        
       })
-      // .then(
-      //   function() {
-      //     console.log("changed sleep to", newSleep);
-      //     // Reload the page to get the updated list
-      //     location.reload();
-      //   }
-      // );
+      
     });
   
     $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+    
+      var newBurger = {
+        burger_name: $("#burger_name").val().trim(),
+        devoured: false
+        
       };
+      console.log(newBurger)
   
       // Send the POST request.
-      $.ajax("/api/cats", {
+      $.ajax("/burgers/create", {
         type: "POST",
-        data: newCat
-      }).then(
-        function() {
+        data: newBurger,
+        complete: function() {
           console.log("created new cat");
-          // Reload the page to get the updated list
           location.reload();
         }
-      );
+      })
     });
   
-    $(".delete-cat").on("click", function(event) {
-      var id = $(this).data("id");
   
-      // Send the DELETE request.
-      $.ajax("/api/cats/" + id, {
-        type: "DELETE"
-      }).then(
-        function() {
-          console.log("deleted cat", id);
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
-    });
   });
   

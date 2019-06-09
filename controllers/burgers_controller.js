@@ -29,16 +29,12 @@ router.get("/", function(req, res) {
   
 
   //insertOne
-  //router.post("/api/burgers", function(req, res) {
-   // cat.create([
-   //   "name", "sleepy"
-  //  ], [
-  //    req.body.name, req.body.sleepy
-  //  ], function(result) {
-      // Send back the ID of the new quote
-    //  res.json({ id: result.insertId });
-  //  });
- // });
+  router.post("/burgers/create", function(req, res) {
+    burger.insertOne(req.body.burger_name, function(result) {
+      
+      res.redirect('/');
+   });
+  });
   
 
 

@@ -46,32 +46,32 @@ var orm = {
 
       cb(result);
     });
-  }
+  },
 
-  //insertOne: function(table, cols, vals, cb) {
-    /*var queryString = "INSERT INTO " + table;
+  insertOne: function(table, vals, cb) {
+    var queryString = "INSERT INTO " + table +" (burger_name) VALUES ('"+vals+"');"
 
-    queryString += " (";
+    /*queryString += " (";
     queryString += cols.toString();
     queryString += ") ";
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
+    queryString += ") ";*/
 
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
-      }ß
+      }
 
       cb(result);
-    });*/
+    })
   //},
   // An example of objColVals would be {name: panther, sleepy: true}
+  }
   
-  
-};
+}
 
 // Export the orm object for the model (cat.js).
 module.exports = orm;
